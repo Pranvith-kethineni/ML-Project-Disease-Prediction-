@@ -1,86 +1,105 @@
 # ML-Project-Disease-Prediction-
-Overview
-This project demonstrates the development, training, evaluation, and deployment of a machine learning model for disease diagnosis using anonymized patient data. The pipeline utilizes the Random Forest Classifier and addresses imbalanced datasets with SMOTE. Comprehensive model evaluation and cross-validation are included for robust performance.
+# Machine Learning with Python: Disease Classification Project
 
-Project Files
-report.pdf: Detailed project report, methodology, and evaluation results.
+## Overview
 
-code.ipynb: Main Jupyter notebook with reproducible code for the full ML pipeline.
+This project demonstrates the development, training, evaluation, and deployment of a **machine learning model for disease diagnosis** using anonymized patient data. The pipeline utilizes the Random Forest Classifier and addresses **imbalanced datasets** with SMOTE. Comprehensive model evaluation and cross-validation are included for robust performance.
 
-SE22UCSE133_predictions.csv: Final model predictions on the test dataset.
+***
 
-Dataset Description
-Train Dataset (Disease_train.csv):
+## Project Files
 
-patient_id: Unique patient identifier
+- `report.pdf`: Detailed project report, methodology, and evaluation results.
+- `code.ipynb`: Main Jupyter notebook with reproducible code for the full ML pipeline.
+- `SE22UCSE133_predictions.csv`: Final model predictions on the test dataset.
 
-feature_1 to feature_n: Numeric anonymized features
+***
 
-diagnosis: Target (0 = no disease, 1 = disease)
+## Dataset Description
 
-Test Dataset (Disease_test.csv):
+- **Train Dataset** (`Disease_train.csv`):  
+  - `patient_id`: Unique patient identifier  
+  - `feature_1` to `feature_n`: Numeric anonymized features  
+  - `diagnosis`: Target (0 = no disease, 1 = disease)  
+- **Test Dataset** (`Disease_test.csv`):  
+  - Same features as training, without the target.
 
-Same features as training, without the target.
+***
 
-ML Pipeline
-1. Preprocessing
-Missing Values: Checked and handled (none found in sample).
+## ML Pipeline
 
-Feature Extraction: Dropped patient_id and diagnosis for features.
+### 1. Preprocessing
 
-Standardization: Applied to all features for uniform contribution.
+- Checked and handled missing values (none found).
+- Extracted features by dropping `patient_id` and `diagnosis`.
+- Standardized features to ensure equal contribution.
 
-2. Imbalanced Data Handling
-SMOTE: Synthetic Minority Over-sampling Technique applied to the scaled feature set to balance class distribution.
+### 2. Handling Imbalanced Data
 
-3. Model Development
-Random Forest Classifier:
+- Applied SMOTE (Synthetic Minority Over-sampling Technique) to balance the dataset.
 
-Initialized with random_state=42 for reproducibility.
+### 3. Model Development
 
-Hyperparameter Tuning:
+- Used a Random Forest Classifier with `random_state=42`.
+- Performed hyperparameter tuning using GridSearchCV on parameters:
+  - `n_estimators`: [100,max_depth`: [10,`min_samples_split`: [2,  - `min_samples_leaf`:[1][2]
+  - `bootstrap`: [True, False]
 
-Performed using GridSearchCV, optimizing parameters like n_estimators, max_depth, min_samples_split, min_samples_leaf, and bootstrap.
+### 4. Evaluation
 
-4. Evaluation
-Validation Split: 80:20 for training/validation.
+- Split training data into training and validation sets (80:20).
+- Evaluated on validation set using ROC-AUC metric: **0.9613**.
+- Performed 5-fold cross-validation resulting in:
+  - Mean accuracy: **0.95075**
+  - Standard deviation: **0.00061**
 
-Metric: ROC-AUC Score (0.96 on validation set).
+### 5. Prediction and Output
 
-Cross Validation: 5-fold performed with mean accuracy of 0.951 and low standard deviation (0.0006), indicating stability.
+- Standardized test dataset.
+- Generated predictions with the best model.
+- Saved predictions to `SE22UCSE133_predictions.csv`.
 
-5. Prediction & Output
-Test data standardized.
+***
 
-Predictions generated and saved in SE22UCSE133_predictions.csv.
+## Results Summary
 
-Script ensures output file is correctly saved.
+| Model              | ROC-AUC (Validation) | Cross-Validation Mean | Std. Deviation |
+|--------------------|----------------------|----------------------|----------------|
+| Random Forest      | 0.9613               | 0.95075              | 0.00061        |
 
-Reproducibility
-All key steps, including preprocessing, model training, evaluation, hyperparameter tuning, and predictions, are fully documented and reproducible in code.ipynb.
+***
 
-How to Run
-Clone Repo
+## How to Run
 
-text
-git clone <repo_url>
-cd <repo_name>
-Install Requirements
+1. **Clone the repository**  
+   ```bash
+   git clone 
+   cd 
+   ```
+2. **Install dependencies**  
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Run the notebook**  
+   Open `code.ipynb` in Jupyter or Google Colab to execute the full ML pipeline.
 
-text
-pip install -r requirements.txt
-Run Notebook
-Launch code.ipynb in Jupyter or Google Colab to execute the full ML pipeline.
+***
 
-Results Summary
-Model	ROC-AUC (Validation)	Cross-Validation Mean	Std. Dev.
-Random Forest (best)	0.96	0.951	0.0006
-Author
-Name: K. Pranvith Chowdary
+## Author
 
-ID: SE22UCSE133
+- **Name:** K. Pranvith Chowdary  
+- **ID:** SE22UCSE133
 
-License
+***
+
+## License
+
 This project is open for educational and academic use.
 
-For further details, refer to report.pdf and comments within code.ipynb.
+***
+
+*For more details, please refer to the `report.pdf` and the code comments in `code.ipynb`.*
+
+[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/91254646/d8ab1d01-45e4-4edc-af57-4a1f5ba0b5e1/report.pdf
+[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/91254646/614302fb-1554-49aa-9211-e2b5e114e971/SE22UCSE133_predictions.csv
+[3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/91254646/76258d91-d925-4cb2-8ce9-17d9c61e37e3/code.ipynb
