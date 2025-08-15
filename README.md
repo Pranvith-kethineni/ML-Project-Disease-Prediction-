@@ -99,7 +99,3 @@ This project is open for educational and academic use.
 ***
 
 *For more details, please refer to the `report.pdf` and the code comments in `code.ipynb`.*
-
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/91254646/d8ab1d01-45e4-4edc-af57-4a1f5ba0b5e1/report.pdf
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/91254646/614302fb-1554-49aa-9211-e2b5e114e971/SE22UCSE133_predictions.csv
-[3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/91254646/76258d91-d925-4cb2-8ce9-17d9c61e37e3/code.ipynb
